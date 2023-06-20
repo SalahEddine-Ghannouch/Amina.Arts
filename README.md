@@ -1,4 +1,4 @@
-# Amina.Arts - Web Application Readme
+# Amina.Arts - Web Application
 
 ![Amina.Arts Logo](https://github.com/SalahEddine-Ghannouch/Amina.Arts/assets/79339578/c8607515-e741-4d40-be6b-7206a996d167)
 
