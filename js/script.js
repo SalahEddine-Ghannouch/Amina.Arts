@@ -6,6 +6,14 @@ menu.onclick = () =>{
   navbar.classList.toggle('active');
 }
 
+// Close menu when clicking on a menu item (for mobile)
+document.querySelectorAll('.navbar a').forEach(link => {
+  link.onclick = () => {
+    menu.classList.remove('fa-times');
+    navbar.classList.remove('active');
+  }
+});
+
 let themeToggler = document.querySelector('.theme-toggler');
 let toggleBtn = document.querySelector('.toggle-btn');
 
@@ -19,6 +27,14 @@ window.onscroll = () =>{
   themeToggler.classList.remove('active');
 }
 
+// Close menu when clicking outside of it
+document.addEventListener('click', (e) => {
+  if (!navbar.contains(e.target) && !menu.contains(e.target)) {
+    menu.classList.remove('fa-times');
+    navbar.classList.remove('active');
+  }
+});
+
 document.querySelectorAll('.theme-toggler .theme-btn').forEach(btn =>{
   
   btn.onclick = () =>{
@@ -28,6 +44,7 @@ document.querySelectorAll('.theme-toggler .theme-btn').forEach(btn =>{
 
 });
 
+// Initialize home slider with pagination
 var swiper = new Swiper(".home-slider", {
   effect: "coverflow",
   grabCursor: true,
@@ -40,10 +57,25 @@ var swiper = new Swiper(".home-slider", {
     modifier: 2,
     slideShadows: true,
   },
-  loop:true,
+  loop: true,
+  spaceBetween: 10,
+  // Simple pagination settings
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    type: 'bullets',
+  },
   autoplay:{
     delay: 3000,
-    disableOnInteraction:false,
+    disableOnInteraction: false,
+  },
+  // Debug callbacks
+  on: {
+    init: function () {
+      if (this.pagination.el) {
+        console.log('Pagination element found:', this.pagination.el);
+      }
+    },
   }
 });
 
